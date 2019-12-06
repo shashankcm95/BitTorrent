@@ -22,16 +22,16 @@ public class FileOwner {
 		int clientid = 1;
 		System.out.println("File Owner running...");
 		ServerSocket listener = new ServerSocket(8000);
-		int numberOfClients = 1;
+		int numberOfClients = 5;
 		try {
-			
-			File fileName = new File("C:\\Users\\NIKHIL MALLADI\\Desktop\\CN1\\test.txt");
-			
+
+			File fileName = new File("C:\\Users\\shash\\Desktop\\CN1\\test.pdf");
+
 			System.out.println("Splitting the given file into chunks");
-			
+
 			splitFile(fileName);
-			
-			String chunksLocation = "C:\\Users\\NIKHIL MALLADI\\Desktop\\CN1\\chunks";
+
+			String chunksLocation = "C:\\Users\\shash\\Desktop\\CN1\\chunks";
 			File[] files = new File(chunksLocation).listFiles();
 
 			int chunkCount = files.length;
@@ -44,14 +44,14 @@ public class FileOwner {
 					arr.add(j);
 				}
 				clientMap.put(i, arr);
-			}	
+			}
 			//mergeFiles();
 			while (true) {
 				if (clientid <= numberOfClients) {
 					new Handler(listener.accept(), clientid, files).start();
 					System.out.println("Connected to Client No. :" + clientid);
 					clientid++;
-				} else {					
+				} else {
 					//break;
 				}
 			}
@@ -62,7 +62,7 @@ public class FileOwner {
 
 	}
 	/*public static void mergeFiles() throws IOException {
-		String directoryPath = "C:\\Users\\NIKHIL MALLADI\\Desktop\\CN1\\chunks";		
+		String directoryPath = "C:\\Users\\NIKHIL MALLADI\\Desktop\\CN1\\chunks";
 		byte[] chunk = new byte[100000]; // this buffer size could be
 											// anything
 		File[] files = new File(directoryPath).listFiles();
@@ -138,7 +138,7 @@ class Handler extends Thread {
 				fis = new FileInputStream(files[i]);
 				byte[] chunk = new byte[100000];
 				bis = new BufferedInputStream(fis);
-				out.write(bis.read(chunk));				
+				out.write(bis.read(chunk));
 				out.flush();
 				//Thread.sleep(1000);
 			}
