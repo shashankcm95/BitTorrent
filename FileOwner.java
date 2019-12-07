@@ -98,7 +98,7 @@ public class FileOwner {
 					BufferedInputStream bis = new BufferedInputStream(fis)) {
 				int bytesAmount = 0;
 				while ((bytesAmount = bis.read(buffer)) > 0) {
-					newFile = new File("C:\\Users\\NIKHIL MALLADI\\Desktop\\CN1\\chunks", Integer.toString(counter++));
+					newFile = new File("C:\\Users\\shash\\Desktop\\CN1\\chunks", Integer.toString(counter++));
 					try (FileOutputStream out1 = new FileOutputStream(newFile)) {
 						out1.write(buffer, 0, bytesAmount);
 						out1.flush();
